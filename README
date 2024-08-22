@@ -1,0 +1,30 @@
+parse_hmmsearch.rb: parse hmmsearch output and make a hit region table, with merging gap-separated hits into one hit.
+Currently, beta version.
+
+[usage]
+$ ruby parse_hmmsearch.rb -i <hmmsearch output> -f <protein fasta> -o <output directory> [options]
+
+[input / output]
+-i, --hmmsearchout [required]  <hmmsearch output>
+-f, --fasta        [required]  <protein fasta>
+-o, --outdir       [required]  <output dir>
+-H, --hmminfo                  <tsv of hmms>
+
+[optional output]
+--create-evalue-table [off]   -- create evalue table of all combinations of proteins and hmms
+
+[paramters]
+-ge, --gene-evalue  [1e-2]        <gene-level i-Evalue threshold>
+-e, --evalue  [10.0]              <domain-level i-Evalue threshold>
+--min-hmm-len [0](int)            <minimum length of hmmlen of domain hit>
+--min-hmm-cov [0](float, 0-1)     <minimum fraction of hmmlen of domain hit in hmm length>
+--min-ali-len [0](int)            <minimum length of alilen of domain hit>
+--min-ali-cov [0](float, 0-1)     <minimum fraction of alilen of domain hit in protein length>
+--max-ali-ovp-frc [0.2](float, 0-1)   <maximum fraction of overlaping of domain hits to be reported in best-hmm.tsv>
+--max-ali-ovp-len [100000](int)       <maximum length of overlaping of domain hits to be reported in best-hmm.tsv>
+--max-hmm-ovp-frc [0.2](float, 0-1)   <maximum fraction of overlaping of domain hits to be reported in best-hmm.tsv>
+--max-hmm-ovp-len [100000](int)       <maximum length of overlaping of domain hits to be reported in best-hmm.tsv>
+
+[others]
+-v, --version
+-h, --help
